@@ -6,7 +6,7 @@ ConfigMain.openpolicemenu = "pmenu"            -- Can only be used if you"re an 
 ConfigMain.delwagoncommand = "delwagon"        -- Command to delete the spawned wagon
 ConfigMain.adjustbadgecommand = "adjustbadge"  -- Command to adjust the badge
 ConfigMain.EnableKeyPoliceMenu = true          -- false: only open police menu with command
-ConfigMain.PoliceMenuKey = 0x3C0A40F2          -- key to open the police menu if ConfigMain.EnableKeyPoliceMenu = true
+ConfigMain.PoliceMenuKey = 0x3C0A40F2 -- F6    -- key to open the police menu if ConfigMain.EnableKeyPoliceMenu = true
 
 
 ConfigMain.Keys = {
