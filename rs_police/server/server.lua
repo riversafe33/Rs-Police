@@ -10,8 +10,6 @@ AddEventHandler("rs_police:deleteBroom", function(netId)
     end
 end)
 
-
-
 RegisterServerEvent("rs_police:goondutysv")
 AddEventHandler("rs_police:goondutysv", function(ptable)
     local _source = source
