@@ -36,6 +36,6 @@ A new key can be assigned to open the Sheriff menu. This key is fully configurab
 Now be configured in the configmain.lua file, allowing you to add your custom models, as well as define which job and rank have access to each badge.
 
 
-# ------------------------------------------------------#
+# ------------------------------------------------------ #
 
 Original version: https://github.com/BurntJannings/legacy_police
