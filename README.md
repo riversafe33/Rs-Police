@@ -39,7 +39,9 @@ Now be configured in the configmain.lua file, allowing you to add your custom mo
 # 10 - Armory cabinet
 Cabinet for weapons and items based on job and rank, so that only players with the required job and rank can withdraw items. The menu also displays the images of the items.
 
-
+# 11 - Admin Permissions 
+If you’re an admin, you can open the sheriff menu using the key or command without needing the job.
 # ------------------------------------------------------ #
 
 Original version: https://github.com/BurntJannings/legacy_police
+
