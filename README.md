@@ -36,6 +36,10 @@ A new key can be assigned to open the Sheriff menu. This key is fully configurab
 Now be configured in the configmain.lua file, allowing you to add your custom models, as well as define which job and rank have access to each badge.
 
 
+# 10 - Armory cabinet
+Cabinet for weapons and items based on job and rank, so that only players with the required job and rank can withdraw items. The menu also displays the images of the items.
+
+
 # ------------------------------------------------------ #
 
 Original version: https://github.com/BurntJannings/legacy_police
