@@ -1,0 +1,352 @@
+ConfigMain = {}
+
+ConfigMain.ondutycommand = "onduty"            -- Command to go on duty
+ConfigMain.offdutycommand = "offduty"          -- Command to go off duty
+ConfigMain.openpolicemenu = "pmenu"            -- Can only be used if you"re an admin or have a job listed in ConfigMain.allowedJobs
+ConfigMain.delwagoncommand = "delwagon"        -- Command to delete the spawned wagon
+ConfigMain.adjustbadgecommand = "adjustbadge"  -- Command to adjust the badge
+ConfigMain.EnableKeyPoliceMenu = true          -- false: only open police menu with command
+ConfigMain.PoliceMenuKey = 0x3C0A40F2          -- key to open the police menu if ConfigMain.EnableKeyPoliceMenu = true
+
+
+ConfigMain.Keys = {
+    up = 0x6319DB71,           -- UP ↑
+    down = 0x05CA7C52,         -- DOWN ↓
+    left = 0xA65EBAB4,         -- LEFT ←
+    right = 0xDEB34313,        -- RIGHT →
+    int = 0xE6F612E4,          -- IN 1
+    out = 0x1CE6D9EB,          -- OUT 2
+    rotateleft = 0x4F49CC4C,   -- ROTATE LEFT 3 
+    rotateright = 0x8F9F9E58,  -- ROTATE RIGHT 4
+    finistadjust = 0xC7B5340A, -- FINIST ENTER
+}
+
+ConfigMain.ControlsPanel = {
+    title = "Customize Badge",
+    controls = {
+        "[← ↑ ↓ →] - Move badge",
+        "[1]       - Zoom in",
+        "[2]       - Zoom out",
+        "[3]       - Rotate left",
+        "[4]       - Rotate right",
+        "[ENTER]   - Confirm adjustment",
+    }
+}
+
+ConfigMain.Text = {
+    jailTimerLabel = "Time in Jail",
+    comisaryMessage = "Press G to get food",
+    taskMessage = "Press G to sweep",
+    wagonMessage = "Press G to take a service wagon",
+    cabinetnui = "Press G to open the armory",
+    storage = "Press G to open the storage",
+    searchplayercuff  = "Press G to search",
+    hireplayer = "Press G to Hire Menu",
+    cabinet = "Cabinet",
+    opencabinet = "Open cabinet",
+    jailchoreblip = "Prison Work",
+    Menu = {
+        gradeRequired = "Required Rank: ",
+        togglebadge = "Toggle Badge",
+        idmenu = "ID Menu",
+        cufftoggle = "Cuff/Uncuff Citizen",
+        escort = "Escort Handcuffed Player",
+        putinoutvehicle = "Put In/Out of Vehicle",
+        jailplayer = "Send Player to Jail",
+        unjailplayer = "Release Player from Jail",
+        lawmenu = "Law Menu",
+        none = "None",
+        vartrue = "true",
+        varfalse = "false",
+        wagonmenutitle = "Service Wagon",
+        wagonmenusub = "Location: ",
+        playerid = "Player ID: ",
+        jailamount = "Jail Time: ",
+        autotele = "Automatic Teleport: ",
+        autoteledesc = "Should the citizen be teleported automatically or manually?",
+        jaillocaiton = "Jail Location: ",
+        jail = "Send Citizen to Jail",
+        jaildesc = "If Auto Jail is set to 'false', you must manually transport the citizen; otherwise, locals will handle it.",
+        jailmenu = "Jail Menu",
+        unjail = "Release Citizen with Previous ID",
+        unjaildesc = "You will release the citizen from jail, and they will be free.",
+        grabweapons = "Take Weapons",
+        grabammo = "Ammo and Items",
+        cabinet = "Cabinet",
+        citizenid = "Get Citizen ID",
+        horseowner = "Get Horse Owner",
+        horseownerdesc = "Retrieve the horse’s owner, if the owner is not nearby, it will show as unowned.",
+        playermoney = "Money",
+        descmoney = "Search money",
+        inventory = "Inventory",
+        descinventory = "Search in inventory",
+        menutitle = "Player",
+        menusubtext = "Choose an option",
+        checkitems = "Register Inventory",
+        valjail = "Valentine",
+        bwjail = "Blackwater",
+        sdjail = "Saint Denis",
+        rhjail = "Rhodes",
+        stjail = "Strawberry",
+        arjail = "Armadillo",
+        tujail = "Tumbleweed",
+        anjail = "Annesburg",
+        sisika = "Sisika",
+        hire = "Hire",
+        fire = "Fire",
+        management = "Staff Management",
+        sellec = "Select an option",
+        sellechire = "Select to hire",
+        sellectohire = "Select a job",
+        tohire = "To hire",
+        rank = "Ranks of",
+        ranktohire = "Select a rank to hire",
+        job = "Job:",
+        firetitle = "Fire Staff",
+        sellectfire = "Select a player",
+        notcarryitems = "You cannot carry more items.",
+        notcarryweapons = "You cannot carry more weapons.",
+    },
+    Input = {
+        inputconfirm = "Confirm",
+        playerid = "Player ID: ",
+        numberonly = "Numbers Only",
+        jailamount = "Jail Time: ",
+        playerhireid = "Player ID",
+        hireplayer = "Hire player",
+        onlynumbers = "Just numbers",
+        yesno = "yes / no",
+        confirmfire = "Confirm Fire?",
+        only = "Just letters",
+        result = "yes",
+        amountmoney = "Amount",
+        money = "Money",
+    },
+    Notify = {
+        id = "Identification",
+        playernearby = "Another player is too close to open the storage",
+        titlebadge = "Badge",
+        service = "Service",
+        handcuff = "Cuffs",
+        prison = "Prison",
+        wagon = "Wagon",
+        job = "Job",
+        escort = "Escort",
+        canteen = "Canteen",
+        inventory = "Inventory",
+        grade = "Rank",
+        armory = "Armory",
+        nocoords = "No coordinates for this city",
+        jailed = "You have been jailed for ",
+        minutes = " minutes",
+        leave = "You have been released",
+        leaveprison = "You tried to escape! Time added to your sentence.",
+        notwagon = "No wagon nearby to remove",
+        notjob = "You don’t have the required job",
+        notcloseenough = "You are not close enough to a citizen",
+        badgeon = "Badge equipped",
+        badgeoff = "Badge removed",
+        onduty = "You are already on duty",
+        notcloseenoughtowagon = "You are not close enough to a wagon",
+        goonduty = "You are now on duty",
+        gooffduty = "You are now off duty",
+        idcheck = "ID Check",
+        notowned = "Not your horse",
+        took = " took ",
+        from = " from ",
+        nojob = "You don’t have the required job",
+        jobok = "Job: ",
+        horse = " - Horse: ",
+        name = "Name: ",
+        idinvalid = "You must enter a valid ID",
+        idincorret = "Invalid player ID.",
+        inprison = "The player is already in jail.",
+        noprison = "The player is not in jail.",
+        wagonok = "Wagon successfully spawned",
+        nograde = "You don’t have the required rank",
+        succes = "You have already collected your food.",
+        collect = "You have collected ",
+        collect1 = "You have received: ",
+        notaccess = "You are not authorized to open this storage.",
+        storage = "Storage",
+        notjoborservice = "You don’t have the required job or are not on duty",
+        permisdenied = "Permission denied",
+        error = "Error",
+        dismissed = "Dismissed",
+        contracted = "Hired",
+        newjob = "New job",
+        playernot = "Player not found",
+        playernotcharge = "Character not loaded",
+        invalidrank = "Invalid rank",
+        youhire = "You have hired",
+        how = "as",
+        youhirehow = "You have been hired as",
+        youfire = "You have fired",
+        fire = "You have been fired from your job",
+        alredygooffduty = "You are already off duty", 
+        notstealcarryweapon = "Player cannot carry more weapons",
+        notstealcarryitems = "Player cannot carry more items",
+        stealmoney = "You’ve taken the suspect away:~t6~",
+    }
+}
+
+ConfigMain.CheckHorse = true
+-- Select the table you want to use: if ConfigMain.CheckHorse is true
+-- sirevlc      -- V3 -- "sirevlc_horses_v3" / -- V1 V2 -- "sirevlc_horses" 
+-- rsd_stable   -- "rsd_horses" 
+-- vorp_stables -- "stables"
+-- bcc-stables  -- "player_horses"
+ConfigMain.SQLTable = "stables"
+
+ConfigMain.jobRequired = true
+ConfigMain.allowedJobs = {
+    "sheriff",
+    "marshal",
+    "lawmen",
+}
+
+OffDutyJobs = {
+    "offsheriff",
+    "offmarshal",
+    "offlawmen",
+}
+
+ConfigMain.Badges = {
+    sheriff = {
+        jobName = "sheriff", -- Job name in your database
+        grades = {
+            {min = 0, max = 2, model = "s_badgedeputy01x"},  -- Badge for ranks 0 to 2
+            {min = 3, max = 5, model = "s_badgesherif01x"}   -- Badge for ranks 3 to 5
+        }
+    },
+    marshal = {
+        jobName = "marshal",
+        grades = {
+            {min = 0, max = 10, model = "s_badgeusmarshal01x"}
+        }
+    },
+    lawmen = {
+        jobName = "lawmen",
+        grades = {
+            {min = 0, max = 3, model = "s_badgedeputy01x"},
+            {min = 4, max = 6, model = "s_badgesherif01x"}
+        }
+    }
+}
+
+ConfigMain.Wagons = { 
+    [1] = { wagon = "gatchuck_2", label = "Gatling Wagon", allowedGrade = 4 },
+    [2] = { wagon = "policeWagongatling01x", label = "Patrol Gatling Wagon", allowedGrade = 4 },
+    [3] = { wagon = "ArmySupplyWagon", label = "Army Supply Wagon", allowedGrade = 1 },
+    [4] = { wagon = "wagonarmoured01x", label = "Armored Wagon", allowedGrade = 2 },
+    [5] = { wagon = "wagonPrison01x", label = "Prison Wagon", allowedGrade = 3 },
+    [6] = { wagon = "warwagon2", label = "War Wagon", allowedGrade = 3 },
+    [7] = { wagon = "policewagon01x", label = "Patrol Wagon", allowedGrade = 3 },    
+}
+
+
+ConfigMain.Stations = { -- Point where the wagon can be taken out at each police station
+    vector3(-278.21, 802.74, 119.38),       -- Valentine
+    vector3(2907.88, 1308.68, 44.94),       -- Annesburg
+    vector3(-762.62, -1270.75, 44.05),      -- Blackwater
+    vector3(2508.31, -1315.81, 48.95),      -- Saint Denis
+    vector3(1359.26, -1299.75, 77.76),      -- Rhodes
+    vector3(-1812.33, -355.65, 164.65)      -- Strawberry
+}
+
+ConfigMain.SpawnCoords = { -- if you wish you can also add ["Tumbleweed"] and ["Armadillo"]
+    ["Valentine"]    = { x = -281.59, y = 828.47, z = 119.6, h = 281.61 },
+    ["Annesburg"]    = { x = 2912.09, y = 1301.52, z = 44.45, h = 156.25 },
+    ["Blackwater"]   = { x = -756.03, y = -1255.74, z = 43.4, h = 285.06 },
+    ["Rhodes"]       = { x = 1356.29, y = -1313.94, z = 76.81, h = 59.07 },
+    ["Saint Denis"]  = { x = 2497.99, y = -1321.53, z = 48.81, h = 275.72},
+    ["Strawberry"]   = { x = -1800.1, y = -350.19, z = 164.12, h = 198.11 },
+}
+
+ConfigMain.ShowBlip = true
+ConfigMain.PoliceStationblip = {
+    {coords = vector3(-277.0, 810.92, 119.38),   blips = 1047294027, blipsName = "Valentine Sheriff Station"},
+    {coords = vector3(-1811.8, -353.6, 164.65),  blips = 1047294027, blipsName = "Strawberry Sheriff Station"},
+    {coords = vector3(2494.49, -1313.47, 48.95), blips = 1047294027, blipsName = "Saint Denis Sheriff Station"},
+    {coords = vector3(1362.04, -1302.08, 77.77), blips = 1047294027, blipsName = "Rhodes Sheriff Station"},
+    {coords = vector3(-768.04, -1266.44, 44.05), blips = 1047294027, blipsName = "Blackwater Sheriff Station"},
+    {coords = vector3(2904.22, 1309.81, 44.94),  blips = 1047294027, blipsName = "Annesburg Sheriff Station"},
+}
+
+-- Configuration of warehouses with optional minimum grade
+ConfigMain.Storage = {
+
+    Valentine = {
+        Name = "Storage", 
+        Limit = 1000,
+        Coords = vector3(-277.0, 810.92, 119.38),
+        MinGrade = false, --false = only job needed, number = minimum grade
+    },
+
+    Strawberry = {
+        Name = "Storage", 
+        Limit = 1000,
+        Coords = vector3(-1811.8, -353.6, 164.65),
+        MinGrade = 2, -- Requires grade 2 or higher
+    },
+
+    SaintDenis = {
+        Name = "Storage", 
+        Limit = 1000,
+        Coords = vector3(2494.49, -1313.47, 48.95),
+        MinGrade = false,
+    },
+
+    Rhodes = {
+        Name = "Storage", 
+        Limit = 1000,
+        Coords = vector3(1362.04, -1302.08, 77.77),
+        MinGrade = false,
+    },
+
+    Blackwater = {
+        Name = "Storage", 
+        Limit = 1000,
+        Coords = vector3(-768.04, -1266.44, 44.05),
+        MinGrade = false,
+    },
+
+    Annesburg = {
+        Name = "Storage", 
+        Limit = 1000,
+        Coords = vector3(2904.22, 1309.81, 44.94),
+        MinGrade = false,
+    },
+}
+
+ConfigMain.Hire = { -- Point to hire or fire
+    vector3(-276.01, 803.83, 119.38),       -- Valentine
+    vector3(2907.6, 1312.9, 44.94),         -- Annesburg
+    vector3(-762.15, -1266.67, 44.05),      -- Blackwater
+    vector3(2508.45, -1308.93, 48.95),      -- Saint Denis
+    vector3(1361.69, -1303.48, 77.77),      -- Rhodes
+    vector3(-1807.09, -348.31, 164.66)      -- Strawberry
+}
+
+ConfigMain.Hirenames = {
+    lawman = { -- job name 
+        -- name = menu label -- grade = job grade -- label = job label -- canHire = false cannot hire, = true can hire -- canFire = false cannot fire, = true can fire
+        { name = "Recruit", Grade = 0, label = "Recruit", canHire = false, canFire = false },
+        { name = "Sheriff", Grade = 1, label = "Sheriff", canHire = false, canFire = false },
+        { name = "Sergeant", Grade = 2, label = "Sergeant", canHire = false, canFire = false },
+        { name = "Lieutenant", Grade = 3, label = "Lieutenant", canHire = false,  canFire = false },
+        { name = "Captain", Grade = 4, label = "Captain", canHire = true,  canFire = true },
+        { name = "Officer", Grade = 5, label = "Officer", canHire = true,  canFire = true }
+    },
+    sheriff = {
+        { name = "Recruit", Grade = 0, label = "Recruit", canHire = false, canFire = false },
+        { name = "Sheriff", Grade = 1, label = "Sheriff", canHire = false, canFire = false },
+        { name = "Sergeant", Grade = 2, label = "Sergeant", canHire = false, canFire = false },
+        { name = "Lieutenant", Grade = 3, label = "Lieutenant", canHire = false,  canFire = false },
+        { name = "Captain", Grade = 4, label = "Captain", canHire = true,  canFire = true },
+        { name = "Officer", Grade = 5, label = "Officer", canHire = true,  canFire = true }
+    },
+    marshal = {
+        { name = "Marshal", Grade = 5, label = "Marshal", canHire = true,  canFire = true }
+    },
+}
