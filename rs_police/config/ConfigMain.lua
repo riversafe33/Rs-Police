@@ -234,7 +234,7 @@ ConfigMain.Badges = {
     }
 }
 
-ConfigMain.Wagons = { 
+ConfigMain.Wagons = { -- AllowedGrade = Minimum grade the player needs to spawn the wagon
     [1] = { wagon = "gatchuck_2", label = "Gatling Wagon", allowedGrade = 4 },
     [2] = { wagon = "policeWagongatling01x", label = "Patrol Gatling Wagon", allowedGrade = 4 },
     [3] = { wagon = "ArmySupplyWagon", label = "Army Supply Wagon", allowedGrade = 1 },
@@ -254,6 +254,7 @@ ConfigMain.Stations = { -- Point where the wagon can be taken out at each police
     vector3(-1812.33, -355.65, 164.65)      -- Strawberry
 }
 
+-- Coordinates where the wagon appears
 ConfigMain.SpawnCoords = { -- if you wish you can also add ["Tumbleweed"] and ["Armadillo"]
     ["Valentine"]    = { x = -281.59, y = 828.47, z = 119.6, h = 281.61 },
     ["Annesburg"]    = { x = 2912.09, y = 1301.52, z = 44.45, h = 156.25 },
