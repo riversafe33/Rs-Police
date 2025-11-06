@@ -74,7 +74,6 @@ AddEventHandler("rs_police:gooffdutyonstart", function()
     local grade = player.jobGrade
     local allowed = false
 
-    -- Verificar si el trabajo está permitido
     for k, v in pairs(ConfigMain.allowedJobs) do
         if v == job then
             allowed = true
@@ -82,12 +81,10 @@ AddEventHandler("rs_police:gooffdutyonstart", function()
         end
     end
 
-    -- Cambiar el trabajo si está permitido
     if allowed then
         player.setJob('off' .. job, grade)
     end
 end)
-
 
 RegisterServerEvent('rs_police:JailPlayerServer')
 AddEventHandler('rs_police:JailPlayerServer', function(player, amount, loc)
@@ -361,9 +358,16 @@ AddEventHandler("rs_police:guncabinet", function(index)
     end
 
     local label = item.label
+
     if grade >= item.allowedGrade then
-        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.collect .. label, "generic_textures", "tick", 4000, "COLOR_GREEN")
-        VorpInv.createWeapon(_source, item.weapon, {}, {})
+        exports.vorp_inventory:canCarryWeapons(_source, 1, function(canCarry)
+            if canCarry then
+                VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.collect .. label, "generic_textures", "tick", 4000, "COLOR_GREEN")
+                VorpInv.createWeapon(_source, item.weapon, {}, {})
+            else
+                VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.fullweapons or "No puedes llevar más armas", "menu_textures", "cross", 4000, "COLOR_RED")
+            end
+        end, item.weapon)
     else
         VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.grade, ConfigMain.Text.Notify.nograde, "menu_textures", "cross", 4000, "COLOR_RED")
     end
@@ -376,14 +380,31 @@ AddEventHandler("rs_police:addammo", function(index)
     local grade = player.jobGrade
 
     local item = ConfigCabinets.WeaponsandAmmo.Ammo[index]
-    if item then
-        if grade >= item.allowedGrade then
-            VorpInv.addItem(_source, item.ammo, 1)
-            VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.collect .. item.label, "generic_textures", "tick", 4000, "COLOR_GREEN")
-        else
-            VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.grade, ConfigMain.Text.Notify.nograde, "menu_textures", "cross", 4000, "COLOR_RED")
-        end
+    if not item then return end
+
+    if grade < item.allowedGrade then
+        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.grade, ConfigMain.Text.Notify.nograde, "menu_textures", "cross", 4000, "COLOR_RED")
+        return
     end
+
+    local amount = item.amount or 1
+    local canCarryItems = true
+
+    exports.vorp_inventory:canCarryItem(_source, item.ammo, amount, function(canCarry)
+        if not canCarry then
+            canCarryItems = false
+        end
+    end)
+
+    Wait(100)
+
+    if not canCarryItems then
+        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.fullitems or "No puedes llevar más objetos o has superado el peso máximo", "menu_textures", "cross", 4000, "COLOR_RED")
+        return
+    end
+
+    VorpInv.addItem(_source, item.ammo, amount)
+    VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.collect .. item.label, "generic_textures", "tick", 4000, "COLOR_GREEN")
 end)
 
 function CheckTable(tbl, val)
