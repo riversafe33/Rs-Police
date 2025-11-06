@@ -686,7 +686,6 @@ AddEventHandler("CheckPoliceMenuPermission", function()
     TriggerClientEvent("OpenPoliceMenuClient", _source)
 end)
 
-
 RegisterServerEvent("rs_police:openMainMenu")
 AddEventHandler("rs_police:openMainMenu", function()
     TriggerClientEvent("rs_police:client:openMainMenu", source)
