@@ -10,7 +10,6 @@ local jaillocation
 local searchid
 local JailEntranceCoords = nil
 local Takenmoney = nil
-local PoliceOnDuty = nil
 local Search = nil
 local InWagon = nil
 local spawn_wagon = nil
@@ -123,18 +122,9 @@ Citizen.CreateThread(function()
 
         if LocalPlayer.state.IsInSession then
             TriggerServerEvent("rs_police:check_jail")
-            TriggerServerEvent("rs_police:gooffdutysv")
+            TriggerServerEvent("rs_police:gooffdutyonstart")
             break
         end
-    end
-end)
-
-RegisterNetEvent("rs_police:onduty")
-AddEventHandler("rs_police:onduty", function(duty)
-    if not duty then
-        PoliceOnDuty = false
-    else
-        PoliceOnDuty = true
     end
 end)
 
@@ -196,11 +186,7 @@ end)
 
 RegisterNetEvent("rs_police:goonduty")
 AddEventHandler("rs_police:goonduty", function()
-    if PoliceOnDuty then
-        TriggerEvent("vorp:NotifyLeft", ConfigMain.Text.Notify.service, ConfigMain.Text.Notify.onduty, "generic_textures", "tick", 4000, "COLOR_RED")
-    else
-        TriggerServerEvent('rs_police:goondutysv', GetPlayers())
-    end
+    TriggerServerEvent('rs_police:goondutysv', GetPlayers())
 end)
 
 RegisterCommand(ConfigMain.ondutycommand, function()
@@ -209,10 +195,6 @@ end)
 
 RegisterCommand(ConfigMain.adjustbadgecommand, function()
     local ped = PlayerPedId()
-
-    if not PoliceOnDuty then
-        return
-    end
 
     if not badgeactive or not Badge then
         return
@@ -270,11 +252,7 @@ end, false)
 
 RegisterNetEvent("rs_police:gooffduty")
 AddEventHandler("rs_police:gooffduty", function()
-    if PoliceOnDuty then
-        TriggerServerEvent("rs_police:gooffdutysv")
-    else
-        TriggerEvent("vorp:NotifyLeft", ConfigMain.Text.Notify.service, ConfigMain.Text.Notify.alredygooffduty, "generic_textures", "tick", 4000, "COLOR_RED")
-    end
+    TriggerServerEvent("rs_police:gooffdutysv")
 end)
 
 RegisterCommand(ConfigMain.offdutycommand, function()
