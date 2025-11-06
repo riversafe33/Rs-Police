@@ -28,9 +28,8 @@ AddEventHandler("rs_police:goondutysv", function(ptable)
     if jobIndex then
         player.setJob(ConfigMain.allowedJobs[jobIndex], grade)
         VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.service, ConfigMain.Text.Notify.goonduty, "generic_textures", "tick", 4000, "COLOR_GREEN")
-        TriggerClientEvent("rs_police:onduty", _source, true)
     else
-        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.job, ConfigMain.Text.Notify.nojob, "menu_textures", "cross", 3000, "COLOR_RED")
+        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.service, ConfigMain.Text.Notify.onduty, "generic_textures", "tick", 4000, "COLOR_YELLOW")
     end
 end)
 
@@ -50,14 +49,45 @@ AddEventHandler("rs_police:gooffdutysv", function()
     local player = VORPcore.getUser(_source).getUsedCharacter
     local job = player.job
     local grade = player.jobGrade
+    local allowed = false
+
     for k, v in pairs(ConfigMain.allowedJobs) do
         if v == job then
-            player.setJob('off' .. job, grade)
-            VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.service, ConfigMain.Text.Notify.gooffduty, "generic_textures", "tick", 4000, "COLOR_GREEN")
+            allowed = true
+            break
         end
-        TriggerClientEvent("rs_police:onduty", _source, false)
+    end
+
+    if allowed then
+        player.setJob('off' .. job, grade)
+        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.service, ConfigMain.Text.Notify.gooffduty, "generic_textures", "tick", 4000, "COLOR_GREEN")
+    else
+        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.service, ConfigMain.Text.Notify.alredygooffduty, "generic_textures", "tick", 4000, "COLOR_YELLOW")
     end
 end)
+
+RegisterServerEvent("rs_police:gooffdutyonstart")
+AddEventHandler("rs_police:gooffdutyonstart", function()
+    local _source = source
+    local player = VORPcore.getUser(_source).getUsedCharacter
+    local job = player.job
+    local grade = player.jobGrade
+    local allowed = false
+
+    -- Verificar si el trabajo está permitido
+    for k, v in pairs(ConfigMain.allowedJobs) do
+        if v == job then
+            allowed = true
+            break
+        end
+    end
+
+    -- Cambiar el trabajo si está permitido
+    if allowed then
+        player.setJob('off' .. job, grade)
+    end
+end)
+
 
 RegisterServerEvent('rs_police:JailPlayerServer')
 AddEventHandler('rs_police:JailPlayerServer', function(player, amount, loc)
@@ -829,7 +859,6 @@ AddEventHandler('rs_police:StealMoney', function(steal_source, amount)
     VORPcore.NotifyAvanced(_source, ConfigMain.Text.Notify.stealmoney .. ' ' .. amount .. "$", "menu_textures", "log_gang_bag", "COLOR_PURE_WHITE", 2000)
 
 end)
-
 
 RegisterServerEvent('rs_police:ReloadInventory')
 AddEventHandler('rs_police:ReloadInventory', function(steal_source, player_source)
