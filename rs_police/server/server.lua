@@ -365,7 +365,7 @@ AddEventHandler("rs_police:guncabinet", function(index)
                 VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.collect .. label, "generic_textures", "tick", 4000, "COLOR_GREEN")
                 VorpInv.createWeapon(_source, item.weapon, {}, {})
             else
-                VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.fullweapons or "No puedes llevar más armas", "menu_textures", "cross", 4000, "COLOR_RED")
+                VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.fullweapons, "menu_textures", "cross", 4000, "COLOR_RED")
             end
         end, item.weapon)
     else
@@ -399,7 +399,7 @@ AddEventHandler("rs_police:addammo", function(index)
     Wait(100)
 
     if not canCarryItems then
-        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.fullitems or "No puedes llevar más objetos o has superado el peso máximo", "menu_textures", "cross", 4000, "COLOR_RED")
+        VORPcore.NotifyLeft(_source, ConfigMain.Text.Notify.armory, ConfigMain.Text.Notify.fullitems, "menu_textures", "cross", 4000, "COLOR_RED")
         return
     end
 
