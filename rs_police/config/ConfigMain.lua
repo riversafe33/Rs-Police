@@ -187,6 +187,9 @@ ConfigMain.Text = {
         notstealcarryweapon = "Player cannot carry more weapons",
         notstealcarryitems = "Player cannot carry more items",
         stealmoney = "You’ve taken the suspect away:~t6~",
+        -- New Notification
+        fullweapons = "You cannot carry any more weapons on you.",
+        fullitems = "You cannot carry any more items on you.",
     }
 }
 
